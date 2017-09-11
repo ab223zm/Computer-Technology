@@ -1,6 +1,6 @@
 ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ; 1DT301, Computer Technology I
-; Date: 2016-09-09
+; Date: 2017-09-09
 ; Author:
 ; Student name 1 Ruth Dirnfeld
 ; Student name 2 Alexandra Bjäremo
@@ -20,7 +20,7 @@
 ; Subroutines: Delay of approximately 0,5 sec in between each count.
 ; Included files: m2560def.inc
 ;
-; Other information: None.
+; Other information: Using a loop to make the counter work infinitely.
 ;
 ; Changes in program: None.
 ;
