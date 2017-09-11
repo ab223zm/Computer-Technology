@@ -1,3 +1,31 @@
+;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+; 1DT301, Computer Technology I
+; Date: 2016-09-09
+; Author:
+; Student name 1 Ruth Dirnfeld
+; Student name 2 Alexandra Bjäremo
+;
+; Lab number: 1
+; Title: How to use the PORTs. Digital input/output. Subroutine call.
+;
+; Hardware: STK600, CPU ATmega2560
+;
+; Function: Creating a Ring Counter, that will light up each LED at
+; a time, while turning the previous one off.
+;
+; Input ports: None.
+; 
+; Output ports: On-board LEDs connected to PORTB.
+;
+; Subroutines: Delay of approximately 0,5 sec in between each count.
+; Included files: m2560def.inc
+;
+; Other information: None.
+;
+; Changes in program: None.
+;
+;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 
 .include "m2560def.inc"
 
@@ -8,22 +36,22 @@ ldi R20, low(RAMEND) ; R20 = low part of RAMEND address
 out SPL,R20 ; SPL = low part of RAMEND address
 
 ldi r20, 0xFF
-out DDRB, r20
+out DDRB, r20				; All one's to DDRB, outputs
 
-ldi r16, 0xFE
+ldi r16, 0xFE				; starting with LED0
 
 floop:
-cpi r16, 0xFF
-breq equal
-out PORTB, r16
-com r16
-lsl r16
-com r16
+cpi r16, 0xFF				; checking if all LEDs are off
+breq equal				
+out PORTB, r16				; write in PORTB, turning on LEDs
+com r16					; inverting the bits of r16				
+lsl r16					; pushing a 0 to the left
+com r16					; inverting the bits of r16 again
 rjmp delay
 rjmp floop
 
 equal: 
-ldi r16, 0xFE
+ldi r16, 0xFE			
 
 rjmp floop
 
