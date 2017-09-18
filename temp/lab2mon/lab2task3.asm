@@ -3,7 +3,7 @@
 ; Date: 2017-09-09
 ; Author:
 ; Student name 1 Ruth Dirnfeld
-; Student name 2 Alexandra Bj‰remo
+; Student name 2 Alexandra Bj√§remo
 ;
 ; Lab number: 2
 ; Title: Change counter
@@ -61,7 +61,7 @@ in r18, PIND
 cpi r18, 0xFF
 breq stoplistening
 
-cpi r18, 0b11111110
+cpi r18, 0xFE
 brne continue
 
 cpi r16, 0
