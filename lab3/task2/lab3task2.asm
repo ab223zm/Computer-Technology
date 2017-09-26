@@ -3,7 +3,7 @@
 ; Date: 2017-09-25
 ; Author:
 ; Student name 1 Ruth Dirnfeld
-; Student name 2 Alexandra Bj‰remo
+; Student name 2 Alexandra Bj√§remo
 ;
 ; Lab number: 3
 ; Title: Interrupts.
@@ -55,6 +55,7 @@ out DDRD, r23
 
 ldi r22, 0x00				; keep track of counters, if 0 then ring, else johnson
 
+;could not test with SW0 because there were no available microcontrollers that had a functioning SW0
 ldi r24, 0x03				; INT0 and INT1 enabled
 out EIMSK, r24
 
