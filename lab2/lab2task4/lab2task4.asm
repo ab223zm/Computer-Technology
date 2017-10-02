@@ -3,7 +3,7 @@
 ; Date: 2017-09-18
 ; Author:
 ; Student name 1 Ruth Dirnfeld
-; Student name 2 Alexandra Bj‰remo
+; Student name 2 Alexandra Bj√§remo
 ;
 ; Lab number: 2
 ; Title: Subroutines.
@@ -73,9 +73,21 @@ wait_milliseconds:
 	dec r21					; decrement r21
 	nop
 	brne L1
+	
+	delay:
+    	ldi  r18, 3
+   	ldi  r19, 138
+    	ldi  r21, 86	
+	L2:	dec  r21
+   		brne L2
+		dec  r19
+    		brne L2
+    		dec  r18
+    		brne L2
+    		rjmp PC+1
 
-	sbiw r25:r24, 1			; substract immediate from word
-	brne L					
+sbiw r25:r24, 1			; substract immediate from word
+	brne L1					
 
 ret
 
