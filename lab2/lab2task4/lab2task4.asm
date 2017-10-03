@@ -79,5 +79,9 @@ delay:
 	dec r18
 	brne L1
 	rjmp PC+1		
+
+pop r25
+pop r24
+
 ret
 
