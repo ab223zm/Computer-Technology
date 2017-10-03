@@ -3,7 +3,7 @@
 ; Date: 2017-09-18
 ; Author:
 ; Student name 1 Ruth Dirnfeld
-; Student name 2 Alexandra Bj‰remo
+; Student name 2 Alexandra Bj√§remo
 ;
 ; Lab number: 2
 ; Title: Subroutines.
@@ -60,22 +60,31 @@ rjmp floop
 ; Depending on the integer value set in the registers the 
 ; delay will either increase or decrease
 wait_milliseconds:
-
-	L:
-	ldi r20, low(600)		; loading part of the integer	
-	ldi r21, high(600)		; loading part of the integer
-
+	ldi r20, 0		; loading part of the integer	
+	ldi r21, 0		; loading part of the integer
+check_loop:	
+	adiw r21:r20, 1
+	cpi r21, r25
+	brne check_loop
+	cpi r20, r24
+	brne check_loop
+	rjmp check_loop
+	
+delay:
+	ldi r18, 3
+	ldi r19, 138
+	ldi r22,86
 	L1:
-	dec r20					; decrement r20 
-	nop
+	dec r22
+	brne L1		
+	dec r19				
 	brne L1
-					
-	dec r21					; decrement r21
-	nop
+	dec r18
 	brne L1
+	rjmp PC+1
 
 	sbiw r25:r24, 1			; substract immediate from word
-	brne L					
+	brne L1					
 
 ret
 
