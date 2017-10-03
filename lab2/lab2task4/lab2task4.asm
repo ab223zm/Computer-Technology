@@ -60,16 +60,13 @@ rjmp floop
 ; Depending on the integer value set in the registers the 
 ; delay will either increase or decrease
 wait_milliseconds:
-	ldi r20, 0		; loading part of the integer	
-	ldi r21, 0		; loading part of the integer
-check_loop:	
-	adiw r21:r20, 1
-	cpi r21, r25
-	brne check_loop
-	cpi r20, r24
-	brne check_loop
-	rjmp check_loop
-	
+	push r24
+	push r25
+d_loop:
+	dec r24
+	brne d_loop
+	dec r25
+	brned_loop
 delay:
 	ldi r18, 3
 	ldi r19, 138
@@ -81,10 +78,6 @@ delay:
 	brne L1
 	dec r18
 	brne L1
-	rjmp PC+1
-
-	sbiw r25:r24, 1			; substract immediate from word
-	brne L1					
-
+	rjmp PC+1		
 ret
 
